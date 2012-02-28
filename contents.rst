@@ -30,3 +30,16 @@ Training
    :hidden:
 
    training/clients
+
+Policies
+--------
+
+* :doc:`Develop policies<developers/policies>`
+   **target:** *developers*
+* Download PDF/download individual chapters
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   developers/policies
