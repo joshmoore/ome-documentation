@@ -142,6 +142,18 @@ on doing that is available under
 .. figure:: images/10000000000003EF000002096AD7CA41.png
    :align:  center
 
+OME QA
+------
+
+The OME QA system (http://qa.openmicroscopy.org.uk/) is an in-house
+system for collecting feedback from users, including failing files,
+stack traces, etc. Like our community feedback, QA feedback should be
+turned into a ticket in a timely manner.
+
+The code is kept in a private github repository, but is available for
+all team members to actively add any features which will improve our
+QA workflow. It is written in Django 1.4.
+
 Forums and mailing list
 -----------------------
 
@@ -224,11 +236,6 @@ available in case you do.
   (https://alfresco.lifesci.dundee.ac.uk) (LDAP-based) for
   collaborating on documents.
 
-* The OME QA system (http://qa.openmicroscopy.org.uk/) is an in-house
-  system for collecting feedback from users, including failing files,
-  stack traces, etc. Like our community feedback, QA feedback should
-  be turned into a ticket in a timely manner.
-
 * Home directory / data repository on necromancer (SSH-based)
 
 .. note::
@@ -244,7 +251,7 @@ Google Docs and Calendars
 
 In addition to the services hosted in Dundee, the team also makes use
 of several Google resources due to the improved real-time
-collaboration that they provide. A single Google collection “OME Docs”
+collaboration that they provide. A single Google collection "OME Docs"
 is made available to all team members. Anything placed in the
 collection is automatically editable by everyone.
 
@@ -267,13 +274,30 @@ calendar
     https://www.google.com/calendar/embed?src=ncf95f8n53mg61b0gdnbu92bhk%40group.calendar.google.com
 
 
-Meetings
+Standups
 --------
+
+Daily standups are held at 9:30 am UK local time in the jabber chat
+room with the goal of planning the days work as efficiently as possible.
+For that reason, timely responses in the chat are appreciated, and
+background conversations are not. All team members in reasonable
+timezones should be present. If you can't be there, a status report to
+ome-nitpick at the end of your working day with any issues (e.g. code
+that needs testing) is appropriate. Any community issues (QA, mailing
+lists, forum posts) that haven't been responded to within 24 hours
+will be assigned. After that, the status of the current sprint and the
+build/testing plan for the day will be discussed. All of this
+information is stored in a single Google doc named "Standup notes".
+Before the meeting, the team can provide their list of finished
+items, to expedite the meeting.
+
+Weekly meetings
+---------------
 
 Weekly meetings are held online with all members of the team. Agendas
 are posted on the appropriate page under :plone:`conference-calls
 <community/minutes/conference-calls>` before hand. Notes are taken
-collaboratively in a Google doc in the “OME Docs > Notes”
+collaboratively in a Google doc named "Weekly notes" in the "OME Docs > Notes"
 collection. Once finished, they are added to the page on Plone, and
 anyone who missed the meeting is expected to review the notes and
 raise any issues during the next meeting. You should also send an
@@ -283,7 +307,21 @@ may change what others can discuss for that week.
 Periodically, a technical presentation is held during the weekly
 meeting. This can be used to either introduce an external tool for
 suggested use by the team or as a peer review of in-progress work.
-See :plone:`meetings <team/meetings>` for more information.
+Another possibility is that the results of a scoping exercise (see
+below) will be presented. See :plone:`meetings <team/meetings>`
+for more information.
+
+Every 8 weeks or so, a meeting inviting external development teams
+will take place. These will focus on integration points between the
+various pieces of software.
+
+Finally, the meetings at the end of a sprint will cover what is
+to be added to the next sprint. These will take the output of the
+previous scoping excercises and other user feedback in order to
+choose the most important next effort.
+
+Mini-group meetings
+-------------------
 
 Minigroup meetings can either be regularly scheduled (e.g. weekly) or
 on an as-needed basis. Notes from such meetings, however, should be
@@ -296,6 +334,18 @@ posted centrally to :plone:`minigroup <community/minutes/minigroup>`.
 for review by the team. Either an email should be sent to ome-nitpick
 with a link to the minigroup notes, or it should be brought up during
 the weekly meeting.
+
+One standing mini-group is the "client strategy" group which meets
+biweekly on Thursdays at 2pm UK. Everyone is welcome to attend. See
+the agenda for issues that might pertain to you. The overarching goal
+is to determine what features need further scoping, who will work on
+the scoping exercises & also on making sure clients stay aligned with
+one another as much as possible. Additional goals are (i) to have
+client feedback upfront rather than during QA & (ii) to have a defined
+client strategy lead in the main by one single person. These meetings
+will also involve input from the UX team and should include
+presentation of mocked up UIs and choice of users to demo things to
+etc.
 
 Process summary
 ===============
@@ -333,6 +383,19 @@ Requirements are large, overarching features which will take months
 in Trac terminology, a small number of requirements will be
 chosen. For patch releases, it’s possible that no requirements will be
 in-progress, but that only bug fixing will take place.
+
+Scoping Exercises
+"""""""""""""""""
+
+In order to guarantee that the entire team understands the intent (or scope)
+of a particular requirement, before it can be scheduled for a milestone
+a concerted scoping effort will take place.
+
+Initial notes will typically be gathered during the client strategy
+meeting and parsed into some format for gathering feedback. Prototypes
+and other graphic depictions of the work can be built and presented to
+users. Eventually, the requirement will be presented to the whole team
+at a weekly meeting.
 
 Stories
 ^^^^^^^
@@ -373,7 +436,7 @@ Beyond the types used in Trac/Agilo, there are several other ways of
 identifying or specially marking tickets.
 
 Bugs
-----
+^^^^
 
 The Agilo plugin provides another potential level to the hierarchy,
 “Bug,” which could appear in the whiteboard like a story. We have
@@ -397,7 +460,7 @@ too large to handle during the current milestone, it should be turned
 into a story and appropriately scheduled.
 
 RFE
----
+^^^
 
 “RFE” stands for “Request for Enhancement” and is a fledgling idea for
 some new feature. They frequently occur during internal testing. While
@@ -410,15 +473,29 @@ details, however, to be a story, though it can be turned into one.
 Sprint process (Week-to-week)
 -----------------------------
 
-Sprints begin at one weekly meeting and terminate two weeks
-later. They consist of tasks that have been marked for the current
-sprint,
+Sprints begin at one weekly meeting and terminate three to four weeks
+later. There will be an initial brief period of task writing, followed
+by 2 weeks of coding, and a final period of testing and documentation
+by the entire team.
+
+The primary focus (1-2 things) of the sprint will be decided ahead of
+time by scoping exercises. If anyone wants to add investigative work
+into a sprint, they should propose it during the last Tuesday meeting
+of the previous sprint. It is *discouraged* to just move things into
+the sprint yourself.
+
+The goal is to create sprints with reasonable expectations of what can
+be accomplished and to only tackle new features when sufficient
+scoping has been carried out. As these features are completed, they
+will be listed on the milestone page on trac.
+
 
 .. _newticket_screenshot:
 .. figure:: images/10000000000004490000024D9EE25EC9.png
    :align:  center
 
-all of which then show up on the whiteboard, most of which are grouped
+The tasks that have been marked for the current sprint
+show up on the whiteboard, most of which are grouped
 together into stories. A story can have some tickets in the current
 sprint, while others – though in the same milestone – will be handled
 in a later sprint. For this reason, a sprint should never be set for a
@@ -572,10 +649,10 @@ find ways to keep communication and collaboration simple for everyone.
 
 	http://scottchacon.com/2011/08/31/github-flow.html
 		Issues with github flow
-		
+
 	http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 		Best practices for git commit message formatting
-	
+
 	http://en.wikipedia.org/wiki/Technical_debt
 		Wikipedia article on Technical debt
 
