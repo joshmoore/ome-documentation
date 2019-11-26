@@ -1,4 +1,4 @@
 Using OMERO5.4 for version
 Using 0 for patch
 Using password from commandline
-Saving to /home/omero/OMERO5.4__0.sql
+Saving to /private/home/omero/OMERO5.4__0.sql

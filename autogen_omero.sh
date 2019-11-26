@@ -23,14 +23,16 @@ test -e $WORKSPACE/omero-install
 test -e $WORKSPACE/omeroweb-install
 
 if [ ! -e $WORKSPACE/venv ]; then
-    virtualenv $WORKSPACE/venv
+    virtualenv --system-site-packages $WORKSPACE/venv
     $WORKSPACE/venv/bin/pip install -r $WORKSPACE/OMERO.server/share/web/requirements-py27.txt
 fi
 set +u # PS1 issue
 . $WORKSPACE/venv/bin/activate
 set -u
 export PATH=$WORKSPACE/OMERO.server/bin:$PATH
-$WORKSPACE/ome-documentation/omero/autogen_docs
+
+cd $WORKSPACE/ome-documentation/
+omero/autogen_docs
 
 if [[ -z $(git status -s) ]]; then
   echo "No local changes"
@@ -43,7 +45,7 @@ else
   fi
 fi
 
-cd $WORKSPACE/ome-documentation/omero
+cd omero
 make clean html
 echo "Order deny,allow
 Deny from all
