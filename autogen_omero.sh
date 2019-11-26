@@ -45,6 +45,12 @@ else
   fi
 fi
 
+# OSX compatibility for testing
+md5sum = md5sum
+type $md5sum || md5 = md5
+sha1sum = sha1sum
+type $sha1sum || sha1sum = shasum
+
 cd omero
 make clean html
 echo "Order deny,allow
@@ -58,7 +64,7 @@ for x in $WORKSPACE/ome-documentation/omero/_build/*.zip
     base=`basename $x`
     dir=`dirname $x`
     pushd "$dir"
-    md5sum "$base" >> "$base.md5"
+    $md5sum "$base" >> "$base.md5"
     sha1sum "$base" >> "$base.sha1"
     popd
 done
